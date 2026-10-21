@@ -1,3 +1,25 @@
+MySQL -u root -ppassword
+SHOW databases;
+CREATE DATABASE CS3700_test;
+USE CS3700_test;
+
+CREATE TABLE major(
+major_id INT PRIMARY KEY AUTO_INCREMENT,
+major_name VARCHAR(100)
+);
+
+CREATE TABLE student(
+student_id int PRIMARY KEY AUTO_INCREMENT,
+first_name VARCHAR(50),
+last_name VARCHAR(50), 
+email VARCHAR(255),
+phone_number VARCHAR(20),
+social_security_number VARCHAR(9),
+street_address VARCHAR(100),
+major_id_fk INT NOT NULL,
+FOREIGN KEY (major_id_fk) REFERENCES major(major_id)
+);
+
 CREATE TABLE instructor(
 instructor_id int PRIMARY KEY AUTO_INCREMENT,
 first_name VARCHAR(50),
@@ -30,35 +52,3 @@ FOREIGN KEY(course_id_fk) REFERENCES courses(course_id),
 FOREIGN KEY(student_id_fk) REFERENCES 
 student(student_id)
 );
-
-CREATE DATABASE CS3700_demo2;
-use CS3700_demo2;
-
-CREATE TABLE manufacturer(
-    manufacturer_id INT PRIMARY KEY AUTO_INCREMENT, 
-    name VARCHAR(20) UNIQUE 
-);
-
-CREATE TABLE product(
-    product_id INT PRIMARY KEY AUTO_INCREMENT,
-    product_name VARCHAR(20) NOT NULL, 
-    rate INT NOT NULL, 
-    manufacturer_id_fk INT NOT NULL, 
-    FOREIGN KEY(manufacturer_id_fk) REFERENCES manufacturer(manufacturer_id)
-);
-
-CREATE TABLE customer(
-    customer_id INT PRIMARY KEY AUTO_INCREMENT,
-    customer_name VARCHAR(200),
-    street_address VARCHAR(200), 
-    phone VARCHAR(20)
-);
-
-CREATE TABLE orders(
-    order_id INT PRIMARY KEY AUTO_INCREMENT,
-    product_id_fk INT NOT NULL, 
-    customer_id_fk INT NOT NULL, 
-    FOREIGN KEY(product_id_fk) REFERENCES product(product_id),
-    FOREIGN KEY(customer_id_fk) REFERENCES customer(customer_id)
-);
-
