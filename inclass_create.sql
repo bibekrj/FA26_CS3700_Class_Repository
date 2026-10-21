@@ -37,8 +37,7 @@ use CS3700_demo2;
 CREATE TABLE manufacter(
     manufacter_id INT PRIMARY KEY AUTO_INCREMENT, 
     name VARCHAR(20) UNIQUE 
-)
-
+);
 
 CREATE TABLE product(
     product_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -46,15 +45,14 @@ CREATE TABLE product(
     rate INT NOT NULL, 
     manufacter_id_fk INT, 
     FOREIGN KEY(manufacter_id_fk) REFERENCES manufacter(manufacter_id)
-)
-
+);
 
 CREATE TABLE customer(
     customer_id INT PRIMARY KEY AUTO_INCREMENT,
     customer_name VARCHAR(200),
     street_address VARCHAR(200), 
     phone VARCHAR(20)
-)
+);
 
 CREATE TABLE order(
     order_id INT PRIMARY KEY AUTO_INCREMENT,
