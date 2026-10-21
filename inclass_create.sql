@@ -34,8 +34,8 @@ student(student_id)
 CREATE DATABASE CS3700_demo2;
 use CS3700_demo2;
 
-CREATE TABLE manufacter(
-    manufacter_id INT PRIMARY KEY AUTO_INCREMENT, 
+CREATE TABLE manufacturer(
+    manufacturer_id INT PRIMARY KEY AUTO_INCREMENT, 
     name VARCHAR(20) UNIQUE 
 );
 
@@ -43,8 +43,8 @@ CREATE TABLE product(
     product_id INT PRIMARY KEY AUTO_INCREMENT,
     product_name VARCHAR(20) NOT NULL, 
     rate INT NOT NULL, 
-    manufacter_id_fk INT, 
-    FOREIGN KEY(manufacter_id_fk) REFERENCES manufacter(manufacter_id)
+    manufacturer_id_fk INT NOT NULL, 
+    FOREIGN KEY(manufacturer_id_fk) REFERENCES manufacturer(manufacturer_id)
 );
 
 CREATE TABLE customer(
@@ -54,10 +54,11 @@ CREATE TABLE customer(
     phone VARCHAR(20)
 );
 
-CREATE TABLE order(
+CREATE TABLE orders(
     order_id INT PRIMARY KEY AUTO_INCREMENT,
-    product_id_fk INT, 
-    customer_id_fk INT, 
+    product_id_fk INT NOT NULL, 
+    customer_id_fk INT NOT NULL, 
     FOREIGN KEY(product_id_fk) REFERENCES product(product_id),
     FOREIGN KEY(customer_id_fk) REFERENCES customer(customer_id)
 );
+
