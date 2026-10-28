@@ -25,3 +25,5 @@ manufacturer ON product.manufacturer_id_fk  = manufacturer.manufacturer_id ORDER
 
 SELECT product.product_id, product.product_name, product.rate, manufacturer.name  AS manufacturer_name FROM product JOIN
 manufacturer ON product.manufacturer_id_fk  = manufacturer.manufacturer_id ORDER BY product.rate DESC;
+
+
