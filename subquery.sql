@@ -68,3 +68,83 @@ VALUES
     (4, 5, 0, NULL),
     (4, 6, 1, 82.00),
     (4, 8, 1, 90.00);
+
+
+    SELECT s.first_name AS Student_First_Name, s.last_name as Student_Last_Name, c.course_name AS Course_Name, e.score AS Grade_Point 
+    FROM enrollment e
+    JOIN student s
+    ON e.student_id_fk = s.student_id
+    JOIN courses c
+    ON c.course_id = e.course_id_fk
+    WHERE Course_Name = "Database Modelling"; 
+
+    SELECT first_name, last_name 
+    FROM student
+    WHERE student_id IN (
+        SELECT student_id_fk
+        FROM enrollment
+        WHERE course_id_fk = 1
+    );
+
+
+        SELECT s.first_name AS Student_First_Name, s.last_name as Student_Last_Name, c.course_name AS Course_Name, e.score AS Grade_Point 
+    FROM enrollment e
+    JOIN student s
+    ON e.student_id_fk = s.student_id
+    JOIN courses c
+    ON c.course_id = e.course_id_fk
+    WHERE Course_Name = "Database Modelling";
+
+
+SELECT student_id_fk, course_id_fk, score 
+FROM enrollment
+WHERE score  > (
+    SELECT AVG(score) FROM enrollment
+);
+
+
+
+  SELECT s.first_name AS Student_First_Name, s.last_name as Student_Last_Name, c.course_name AS Course_Name, e.score AS Grade_Point 
+    FROM enrollment e
+    JOIN student s
+    ON e.student_id_fk = s.student_id
+    JOIN courses c
+    ON c.course_id = e.course_id_fk
+    WHERE e.course_id_fk NOT IN (4);
+
+
+
+  SELECT s.first_name AS Student_First_Name, s.last_name as Student_Last_Name, c.course_name AS Course_Name, e.is_complete as Completion, e.score AS Grade_Point 
+    FROM enrollment e
+    JOIN student s
+    ON e.student_id_fk = s.student_id
+    JOIN courses c
+    ON c.course_id = e.course_id_fk
+    WHERE NOT Course_Name='Senior Design II';
+
+
+
+SELECT first_name, last_name FROM student
+WHERE student_id NOT IN (
+    SELECT student_id_fk FROM enrollment WHERE course_id_fk = 4
+);
+
+
+  SELECT s.first_name AS Student_First_Name, s.last_name as Student_Last_Name, c.course_name AS Course_Name, e.is_complete as Completion, e.score AS Grade_Point 
+    FROM enrollment e
+    JOIN student s
+    ON e.student_id_fk = s.student_id
+    JOIN courses c
+    ON c.course_id = e.course_id_fk
+WHERE Course_name = "Operating Systems"
+
+ SELECT s.first_name AS Student_First_Name, s.last_name as Student_Last_Name, c.course_name AS Course_Name, e.is_complete as Completion, e.score AS Grade_Point 
+    FROM enrollment e
+    JOIN student s
+    ON e.student_id_fk = s.student_id
+    JOIN courses c
+    ON c.course_id = e.course_id_fk
+WHERE Course_name = "Database Modelling";
+
+
+select DISTINCT student_id_fk from enrollment where student_id_fk NOT IN (Select student_id_fk from enrollment WHERE course_id_fk = 4);
