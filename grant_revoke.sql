@@ -11,3 +11,9 @@ GRANT INSERT, UPDATE, DELETE, SELECT on CS3700_test.* TO 'bibek'@'localhost';
 
 
 REVOKE UPDATE, DELETE on CS3700_test.* FROM 'bibek'@'localhost';
+
+
+
+-- GRANT ALL PRIVILEGES ON CS3700_test.* TO 'random'@'localhost';
+
+-- REVOKE All PRIVILEGES ON CS3700_test.* FROM "user"@"location";
